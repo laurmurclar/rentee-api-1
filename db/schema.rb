@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219164737) do
+ActiveRecord::Schema.define(version: 20160222113112) do
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 20160219164737) do
     t.boolean  "ptrb"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.string   "f_name"
+    t.string   "l_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "smoker"
+    t.boolean  "pet_owner"
+    t.boolean  "refs_avail"
+    t.string   "occupation"
+    t.text     "bio"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

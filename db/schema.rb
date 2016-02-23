@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222114113) do
+ActiveRecord::Schema.define(version: 20160223105142) do
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20160222114113) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "properties_tenants", id: false, force: :cascade do |t|
+    t.integer "tenant_id",   null: false
+    t.integer "property_id", null: false
+  end
+
+  add_index "properties_tenants", ["property_id"], name: "index_properties_tenants_on_property_id"
+  add_index "properties_tenants", ["tenant_id"], name: "index_properties_tenants_on_tenant_id"
 
   create_table "tenants", force: :cascade do |t|
     t.string   "f_name"

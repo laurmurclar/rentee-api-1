@@ -2,6 +2,7 @@ class Property < ActiveRecord::Base
 	has_many :beds
 	has_many :amenities
 	has_one :landlord
+	has_many :tenants, through: :properties_tenants
 
 	validates :building, presence: true, length: {minimum: 4, maximum: 30}
 	validates :street, presence: true, length: {minimum: 4, maximum: 30}

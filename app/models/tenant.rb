@@ -1,4 +1,6 @@
 class Tenant < ActiveRecord::Base
+	has_many :properties, through: :properties_tenants
+
 	before_save {email.downcase!}
 	validates :f_name, presence: true, length: {maximum: 30}
 	validates :l_name, presence: true, length: {maximum: 30}

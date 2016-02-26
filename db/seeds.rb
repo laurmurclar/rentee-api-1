@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Tenant.create([{f_name: 'Bob', l_name: 'Heck', phone: '0872432222',
+  email: 'bob@gmail.com', password: 'foobar', smoker: false,
+  pet_owner: true, refs_avail: true, occupation: 'student',
+  bio: 'Likes long walks on the beach'}])

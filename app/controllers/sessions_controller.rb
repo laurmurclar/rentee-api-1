@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
   	logger.info("db password #{@tenant.password}")
   	logger.info("post password #{params[:password]}")
   	if @tenant && @tenant.authenticate(params[:password])
-  		login_tenant @tenant
+  		# login_tenant @tenant
   		render json: @tenant
   	else
-  		#render json:  
+  		#render json:
   	end
   end
 

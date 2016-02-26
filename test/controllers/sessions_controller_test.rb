@@ -13,4 +13,11 @@ class SessionsControllerTest < ActionController::TestCase
     assert_equal @tenant.password, body["password"]
   end
 
+  test "invalid login should return errors" do
+    post :create, { email: @tenant.email, password: 'wrongpass' }, format: "json"
+    assert_response :unauthorized
+    body = JSON.parse(response.body)
+    assert_equal "Not authenticated", body["errors"]
+  end
+
 end

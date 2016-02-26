@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
   		# login_tenant @tenant
   		render json: @tenant
   	else
-  		#render json:
+      render json: { errors: "Not authenticated" },
+                status: :unauthorized
   	end
   end
 

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
+
   def new
 
   end
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
   def create
   	@tenant = Tenant.find_by(email: params[:email].downcase)
   	if @tenant && @tenant.authenticate(params[:password])
-  		# login_tenant @tenant
+  		log_in_tenant @tenant
   		render json: @tenant
   	else
       render json: { errors: "Not authenticated" },
@@ -15,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	logout
+  	log_out_tenant
   	#render json:
   end
 end

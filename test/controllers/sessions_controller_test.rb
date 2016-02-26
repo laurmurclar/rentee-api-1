@@ -7,6 +7,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "valid login should return user" do
     post :create, { email: @tenant.email, password: 'foobar' }, format: "json"
+    assert is_tenant_logged_in?
     assert_response :success
     body = JSON.parse(response.body)
     assert_equal @tenant.email, body["email"]
@@ -15,6 +16,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "invalid login should return errors" do
     post :create, { email: @tenant.email, password: 'wrongpass' }, format: "json"
+    assert_not is_tenant_logged_in?
     assert_response :unauthorized
     body = JSON.parse(response.body)
     assert_equal "Not authenticated", body["errors"]

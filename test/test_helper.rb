@@ -6,5 +6,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # Returns true if a test tenant is logged in.
+  def is_tenant_logged_in?
+    !session[:tenant_id].nil?
+  end
 end
